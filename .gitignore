@@ -1,0 +1,36 @@
+cat > .gitignore <<'EOF'
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Raw dataset
+data/
+
+# Preprocessing / generated files
+interim/
+
+# Training outputs
+outputs/checkpoints/
+outputs/predictions/
+
+# Logs
+logs/
+
+# Large files
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.mp4
+*.avi
+*.mov
+
+# Optional metadata outputs
+metadata/*.csv
+EOF
