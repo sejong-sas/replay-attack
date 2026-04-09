@@ -27,9 +27,8 @@ logs/
 *.avi
 *.mov
 
-# Track dataset files under data/ explicitly
-!data/**/*.mov
-!data/**/*.txt
+# Dataset
+data/
 
 # Optional metadata outputs
 metadata/*.csv
