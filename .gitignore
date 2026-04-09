@@ -29,6 +29,3 @@ logs/
 
 # Dataset
 data/
-
-# Optional metadata outputs
-metadata/*.csv
