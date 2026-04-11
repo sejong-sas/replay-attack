@@ -1,31 +1,11 @@
-# macOS
-.DS_Store
-
-# Python
-__pycache__/
-*.pyc
-.venv/
-venv/
-
-# Preprocessing / generated files
-interim/
-
-# Training outputs
-outputs/checkpoints/
-outputs/predictions/
-
-# Logs
-logs/
-
-# Large files
+data/
 *.pt
 *.pth
 *.ckpt
-*.npy
-*.npz
-*.mp4
-*.avi
-*.mov
-
-# Dataset
-data/
+*.onnx
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+.venv/
+outputs/checkpoints/

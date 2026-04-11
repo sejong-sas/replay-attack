@@ -1,0 +1,28 @@
+{
+  "model": "MobileNetV3-Small",
+  "initialization": "random",
+  "threshold_selected_on": "devel",
+  "threshold": 0.121,
+  "devel_threshold_search_result": {
+    "accuracy": 1.0,
+    "apcer": 0.0,
+    "bpcer": 0.0,
+    "acer": 0.0,
+    "hter": 0.0,
+    "tp": 300,
+    "tn": 60,
+    "fp": 0,
+    "fn": 0
+  },
+  "test_video_metrics": {
+    "accuracy": 0.9875,
+    "apcer": 0.0,
+    "bpcer": 0.075,
+    "acer": 0.0375,
+    "hter": 0.0375,
+    "tp": 400,
+    "tn": 74,
+    "fp": 6,
+    "fn": 0
+  }
+}

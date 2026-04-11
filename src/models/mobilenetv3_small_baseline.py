@@ -3,7 +3,7 @@ from torchvision import models
 
 
 class MobileNetV3SmallBinaryClassifier(nn.Module):
-    def __init__(self, pretrained=True):
+    def __init__(self, num_classes=2, pretrained=False):
         super().__init__()
 
         if pretrained:
@@ -12,8 +12,8 @@ class MobileNetV3SmallBinaryClassifier(nn.Module):
             weights = None
 
         self.backbone = models.mobilenet_v3_small(weights=weights)
-        in_features = self.backbone.classifier[-1].in_features
-        self.backbone.classifier[-1] = nn.Linear(in_features, 2)
+        in_features = self.backbone.classifier[3].in_features
+        self.backbone.classifier[3] = nn.Linear(in_features, num_classes)
 
     def forward(self, x):
         return self.backbone(x)
