@@ -1,0 +1,11 @@
+video_id,label,split,attack_type,support_type,environment,client_id,dataset_name,score,threshold,pred_label,correct,error_type,margin_to_threshold,class_confidence_margin
+devel__attack__hand__attack_mobile_client111_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client111,replay-attack,0.8300917202776129,0.018,1,1,CORRECT,0.8120917202776129,0.8120917202776129
+devel__attack__hand__attack_mobile_client017_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client017,replay-attack,0.8775534413077615,0.018,1,1,CORRECT,0.8595534413077615,0.8595534413077615
+devel__attack__hand__attack_mobile_client118_session01_mobile_video_adverse,1,devel,video,hand,adverse,client118,replay-attack,0.9067651737820018,0.018,1,1,CORRECT,0.8887651737820018,0.8887651737820018
+devel__attack__fixed__attack_mobile_client010_session01_mobile_photo_adverse,1,devel,photo,fixed,adverse,client010,replay-attack,0.9784502278674732,0.018,1,1,CORRECT,0.9604502278674732,0.9604502278674732
+devel__attack__hand__attack_mobile_client118_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client118,replay-attack,0.9858811714432456,0.018,1,1,CORRECT,0.9678811714432456,0.9678811714432456
+devel__attack__hand__attack_mobile_client010_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client010,replay-attack,0.986909194426103,0.018,1,1,CORRECT,0.968909194426103,0.968909194426103
+devel__attack__hand__attack_highdef_client017_session01_highdef_video_adverse,1,devel,video,hand,adverse,client017,replay-attack,0.9927430748939514,0.018,1,1,CORRECT,0.9747430748939514,0.9747430748939514
+devel__attack__fixed__attack_highdef_client003_session01_highdef_photo_controlled,1,devel,photo,fixed,controlled,client003,replay-attack,0.9940929033539512,0.018,1,1,CORRECT,0.9760929033539512,0.9760929033539512
+devel__attack__hand__attack_mobile_client015_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client015,replay-attack,0.9943201487714594,0.018,1,1,CORRECT,0.9763201487714592,0.9763201487714592
+devel__attack__fixed__attack_mobile_client113_session01_mobile_photo_controlled,1,devel,photo,fixed,controlled,client113,replay-attack,0.9959948767315258,0.018,1,1,CORRECT,0.9779948767315256,0.9779948767315256

@@ -9,3 +9,9 @@ __pycache__/
 .DS_Store
 .venv/
 outputs/checkpoints/
+
+# ignore dataset
+data/
+
+anal.zip
+anal/

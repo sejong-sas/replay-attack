@@ -1,0 +1,6 @@
+video_id,label,split,attack_type,support_type,environment,client_id,dataset_name,score,threshold,pred_label,correct,error_type,margin_to_threshold,class_confidence_margin
+devel__attack__hand__attack_mobile_client111_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client111,replay-attack,0.8300917202776129,0.018,1,1,CORRECT,0.8120917202776129,0.8120917202776129
+devel__attack__hand__attack_mobile_client017_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client017,replay-attack,0.8775534413077615,0.018,1,1,CORRECT,0.8595534413077615,0.8595534413077615
+devel__attack__hand__attack_mobile_client118_session01_mobile_video_adverse,1,devel,video,hand,adverse,client118,replay-attack,0.9067651737820018,0.018,1,1,CORRECT,0.8887651737820018,0.8887651737820018
+devel__attack__hand__attack_mobile_client118_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client118,replay-attack,0.9858811714432456,0.018,1,1,CORRECT,0.9678811714432456,0.9678811714432456
+devel__attack__hand__attack_mobile_client010_session01_mobile_photo_adverse,1,devel,photo,hand,adverse,client010,replay-attack,0.986909194426103,0.018,1,1,CORRECT,0.968909194426103,0.968909194426103

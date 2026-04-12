@@ -1,5 +1,6 @@
 import os
 import random
+import argparse
 import numpy as np
 import torch
 import torch.nn as nn
@@ -10,16 +11,38 @@ from torchvision import transforms
 from src.datasets.replay_pad_clip_dataset import ReplayPADClipDataset
 from src.models.cnn_lstm_baseline import CNNLSTMBinaryClassifier
 
-CLIP_INDEX_CSV = "/home/saslab01/Desktop/replay_pad/clip_index/replayattack_clip10_index.csv"
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--train_csv",
+        type=str,
+        default="/home/saslab01/Desktop/replay_pad/clip_index/replayattack_clip20_train.csv",
+    )
+    parser.add_argument(
+        "--devel_csv",
+        type=str,
+        default="/home/saslab01/Desktop/replay_pad/clip_index/replayattack_clip20_devel.csv",
+    )
+    parser.add_argument(
+        "--save_name",
+        type=str,
+        default="cnn_lstm_clip20_random_best.pth",
+    )
+    parser.add_argument("--batch_size", type=int, default=8)
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--lr", type=float, default=1e-4)
+    parser.add_argument("--img_size", type=int, default=224)
+    parser.add_argument("--num_workers", type=int, default=4)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--hidden_dim", type=int, default=128)
+    parser.add_argument("--num_layers", type=int, default=1)
+    return parser.parse_args()
+
+
 CHECKPOINT_DIR = "/home/saslab01/Desktop/replay_pad/outputs/checkpoints"
 os.makedirs(CHECKPOINT_DIR, exist_ok=True)
 
-BATCH_SIZE = 8
-EPOCHS = 10
-LR = 1e-4
-IMG_SIZE = 224
-NUM_WORKERS = 4
-SEED = 42
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
@@ -62,37 +85,61 @@ def run_one_epoch(model, loader, criterion, optimizer=None):
 
 
 def main():
-    set_seed(SEED)
+    args = parse_args()
+    set_seed(args.seed)
 
     transform = transforms.Compose([
-        transforms.Resize((IMG_SIZE, IMG_SIZE)),
+        transforms.Resize((args.img_size, args.img_size)),
         transforms.ToTensor(),
     ])
 
-    train_dataset = ReplayPADClipDataset(CLIP_INDEX_CSV, split="train", transform=transform)
-    devel_dataset = ReplayPADClipDataset(CLIP_INDEX_CSV, split="devel", transform=transform)
+    # split별 CSV를 직접 사용
+    train_dataset = ReplayPADClipDataset(
+        csv_path=args.train_csv,
+        split="train",
+        transform=transform
+    )
+    devel_dataset = ReplayPADClipDataset(
+        csv_path=args.devel_csv,
+        split="devel",
+        transform=transform
+    )
 
-    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS, pin_memory=True)
-    devel_loader = DataLoader(devel_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=args.batch_size,
+        shuffle=True,
+        num_workers=args.num_workers,
+        pin_memory=True,
+    )
+    devel_loader = DataLoader(
+        devel_dataset,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+    )
 
     model = CNNLSTMBinaryClassifier(
-        hidden_dim=128,
-        num_layers=1,
+        hidden_dim=args.hidden_dim,
+        num_layers=args.num_layers,
         num_classes=2,
         pretrained=False,
     ).to(DEVICE)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=LR)
+    optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
     best_devel_acc = 0.0
-    best_path = os.path.join(CHECKPOINT_DIR, "cnn_lstm_clip10_random_best.pth")
+    best_path = os.path.join(CHECKPOINT_DIR, args.save_name)
 
     print(f"[INFO] Device: {DEVICE}")
+    print(f"[INFO] Train CSV: {args.train_csv}")
+    print(f"[INFO] Devel CSV: {args.devel_csv}")
     print(f"[INFO] Train clips: {len(train_dataset)}")
     print(f"[INFO] Devel clips: {len(devel_dataset)}")
 
-    for epoch in range(1, EPOCHS + 1):
+    for epoch in range(1, args.epochs + 1):
         train_loss, train_acc = run_one_epoch(model, train_loader, criterion, optimizer)
         devel_loss, devel_acc = run_one_epoch(model, devel_loader, criterion)
 
