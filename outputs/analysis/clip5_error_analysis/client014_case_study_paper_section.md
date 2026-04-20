@@ -38,10 +38,10 @@ The remaining errors of the 5-frame CNN-LSTM student were concentrated in two ge
 
 Figure files:
 
-- `outputs/analysis/clip5_error_analysis/client014_case_study_figure.png`
-- `outputs/analysis/clip5_error_analysis/client014_case_study_figure.pdf`
+- `outputs/analysis/clip5_error_analysis/client014_illumination_score_case_figure.png`
+- `outputs/analysis/clip5_error_analysis/client014_illumination_score_case_figure.pdf`
 
-**Figure X. False-positive examples from `client014` under adverse acquisition conditions.** The 5-frame CNN-LSTM student falsely classified two genuine adverse videos as attacks, while the controlled genuine videos from the same subject were correctly classified with near-zero spoof scores. The adverse videos contain stronger illumination/background variation, suggesting that the remaining errors are associated with acquisition-condition sensitivity rather than subject identity alone.
+**Figure X. Bona fide `client014` examples under controlled and adverse illumination.** All four videos are bona fide samples from the same subject. The 5-frame CNN-LSTM student assigns high attack scores to the two adverse-illumination trials, causing false positives, whereas the controlled trials remain far below the decision threshold and are correctly classified. This example illustrates that the remaining BPCER errors are associated with sensitivity to adverse acquisition conditions rather than subject identity alone.
 
 Before including this figure in the paper, confirm that the Replay-Attack dataset license permits publication of identifiable subject frames in qualitative examples. If needed, use a blurred or cropped version for privacy-preserving presentation.
 

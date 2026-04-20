@@ -60,6 +60,8 @@ This suggests the model has a score calibration/generalization problem rather th
 A contact sheet was saved to:
 
 - `/home/saslab01/Desktop/replay_pad/outputs/analysis/clip5_error_analysis/client014_real_contact_sheet.jpg`
+- `/home/saslab01/Desktop/replay_pad/outputs/analysis/clip5_error_analysis/client014_illumination_score_case_figure.png`
+- `/home/saslab01/Desktop/replay_pad/outputs/analysis/clip5_error_analysis/client014_illumination_score_case_figure.pdf`
 
 Compared with the same client's controlled real videos, the false-positive adverse videos have a different background/window pattern and illumination condition. Simple frame diagnostics also differ:
 
@@ -116,4 +118,6 @@ These are feature/experiment ideas, not implemented changes:
 - `outputs/analysis/clip5_error_analysis/clip5_video_score_stability.csv`
 - `outputs/analysis/clip5_error_analysis/clip5_fp_clip_score_trace.csv`
 - `outputs/analysis/clip5_error_analysis/client014_real_contact_sheet.jpg`
+- `outputs/analysis/clip5_error_analysis/client014_illumination_score_case_figure.png`
+- `outputs/analysis/clip5_error_analysis/client014_illumination_score_case_figure.pdf`
 - `outputs/analysis/clip5_error_analysis/clip5_error_analysis_summary.md`
